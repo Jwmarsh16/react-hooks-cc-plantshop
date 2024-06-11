@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PlantCard from "./PlantCard";
 
+
 function PlantList() {
+  const [data, setData] = useState([]);
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+    const response = await fetch("http://localhost:6001/plants");
+    const result = await response.json();
+    setData(result)
+    }
+
+  fetchData();
+}, []);
+
   return (
-    <ul className="cards">{/* render PlantCards components in here */}</ul>
+    <ul className="cards">{data.map(plant => (<PlantCard key={plant.id} plant={plant}/> ))} </ul>
   );
 }
 
