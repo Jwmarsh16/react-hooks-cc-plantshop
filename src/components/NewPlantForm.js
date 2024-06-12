@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 function NewPlantForm({ addPlant }) {
-  const [formData, setFormData] = useState({
-    key: "index", 
+  const [formData, setFormData] = useState({ 
     name: "",
     image: "",
     price: "",
@@ -14,7 +13,6 @@ function NewPlantForm({ addPlant }) {
     const {name, value} = e.target;
     setFormData({
       ...formData,
-      
       [name]: value,
     });
   };
@@ -28,7 +26,7 @@ function NewPlantForm({ addPlant }) {
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
-      <form submit = {handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type="text"
                name="name" 
                placeholder="Plant name"
