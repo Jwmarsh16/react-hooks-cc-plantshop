@@ -2,24 +2,33 @@ import React, { useState } from "react";
 
 function NewPlantForm({ addPlant }) {
   const [formData, setFormData] = useState({
+    key: "index", 
     name: "",
     image: "",
     price: "",
   });
 
+
+
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormData({
       ...formData,
+      
       [name]: value,
     });
   };
-
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addPlant(formData);
+    setFormData({ name: "", image: "", price: ""})
+  };
 
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
-      <form>
+      <form submit = {handleSubmit}>
         <input type="text"
                name="name" 
                placeholder="Plant name"
