@@ -41,7 +41,7 @@ function NewPlantForm({ addPlant }) {
                name="price"
                step="0.01"
                placeholder="Price" 
-               value={formData.number} 
+               value={formData.price} 
                onChange={handleChange}/>
 
         <button type="submit">Add Plant</button>
